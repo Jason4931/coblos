@@ -160,6 +160,7 @@
         function updateChart() {
             suaraChart.data.datasets[0].data = [suara[1], suara[2], suara[3]];
             suaraChart.update();
+            localStorage.setItem("suara", JSON.stringify(suara));
         }
 
         // Fungsi untuk menangani submit form
@@ -178,8 +179,7 @@
                     document.getElementById("coblos").disabled = true;
                     pertama = false;
 
-                    // Simpan data suara dan status ke localStorage
-                    localStorage.setItem("suara", JSON.stringify(suara));
+                    // Simpan data status ke localStorage
                     localStorage.setItem("pertama", pertama);
                 }
             } else {
@@ -198,7 +198,7 @@
             updateChart();
         }
 
-        // Set interval untuk menambah 3 suara secara acak setiap menit (60000 ms)
+        // Set interval untuk menambah suara secara acak setiap 10 detik (10000 ms)
         setInterval(tambahSuaraAcak, 10000);
 
         // Perbarui tampilan dan grafik saat halaman dimuat
